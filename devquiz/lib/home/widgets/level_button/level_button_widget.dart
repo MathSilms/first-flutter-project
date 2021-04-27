@@ -1,20 +1,18 @@
 import 'package:DevQuiz/core/app_colors.dart';
-import 'package:DevQuiz/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LevelButtonWidget extends StatelessWidget {
   final String label;
-
   LevelButtonWidget({Key? key, required this.label})
-      : assert(['Fácil', 'Médio', 'Difícil', 'Perito'].contains(label)),
+      : assert(["Fácil", "Médio", "Difícil", "Perito"].contains(label)),
         super(key: key);
 
   final config = {
     "Fácil": {
-      "color": AppColors.levelButtonMedio,
-      "borderColor": AppColors.levelButtonBorderMedio,
-      "fontColor": AppColors.levelButtonTextMedio,
+      "color": AppColors.levelButtonFacil,
+      "borderColor": AppColors.levelButtonBorderFacil,
+      "fontColor": AppColors.levelButtonTextFacil,
     },
     "Médio": {
       "color": AppColors.levelButtonMedio,
@@ -30,9 +28,9 @@ class LevelButtonWidget extends StatelessWidget {
       "color": AppColors.levelButtonPerito,
       "borderColor": AppColors.levelButtonBorderPerito,
       "fontColor": AppColors.levelButtonTextPerito,
-    }
+    },
   };
-  //28:39
+
   Color get color => config[label]!['color']!;
   Color get borderColor => config[label]!['borderColor']!;
   Color get fontColor => config[label]!['fontColor']!;
@@ -41,19 +39,16 @@ class LevelButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
         color: color,
-        border: Border.fromBorderSide(
-          BorderSide(color: borderColor),
-        ),
+        border: Border.fromBorderSide(BorderSide(
+          color: borderColor,
+        )),
+        borderRadius: BorderRadius.circular(28),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
         child: Text(label,
-            style: GoogleFonts.notoSans(
-              color: fontColor,
-              fontSize: 13,
-            )),
+            style: GoogleFonts.notoSans(color: fontColor, fontSize: 13)),
       ),
     );
   }
